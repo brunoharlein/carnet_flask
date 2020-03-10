@@ -58,3 +58,14 @@ class User(UserMixin, db.Model):
             return True
         return False
 
+def init_db():
+    """Function to init the database tables with a sample user"""
+    """Fonction pour lancer les tables de base de données avec un exemple d'utilisateur"""
+    db.drop_all()
+    db.create_all()
+    user = User("test", "test", "test", None, datetime.now(), None)
+    user.set_password("Test1234")
+    db.session.add(user)
+    db.session.commit()
+    print("Database initialized !")
+
