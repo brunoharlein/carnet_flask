@@ -17,3 +17,11 @@ class NewThoughtForm(FlaskForm):
     """Classe pour générer un formulaire pour ajouter une pensée à la base de données"""
     content = StringField('Citation', validators=[DataRequired()])
     submit = SubmitField('Enregistrer')
+
+class LoginForm(FlaskForm):
+    """Class to generate a form for the login"""
+    """Classe pour générer un formulaire pour la connexion"""
+    pseudo = StringField('Pseudo', validators=[DataRequired()])
+    password = PasswordField('Mot de passe', validators=[DataRequired()])
+    submit = SubmitField('Se connecter')
+
