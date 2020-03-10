@@ -45,3 +45,16 @@ class User(UserMixin, db.Model):
         self.description = description
         self.registering_date = registering_date
         self.password = password
+
+    def set_password(self, password):
+        """Function to hash the password before setting it in the attribut"""
+        """Fonction pour hacher le mot de passe avant de le définir dans l'attribut"""
+        self.password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+    def check_password(self, password):
+        """Function to check that the user password match another password"""
+        """Fonction pour vérifier que le mot de passe utilisateur correspond à un autre mot de passe"""
+        if hashlib.sha256(password.encode('utf-8')).hexdigest() == self.password:
+            return True
+        return False
+
